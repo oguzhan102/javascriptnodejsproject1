@@ -12,11 +12,10 @@ exports.create = async (req, res) => {
     const user = new User(req.body);
     await User.register(user, req.body.password);
 
-    req.flash('success', `Welcome, ${user.fullname}. Thank you for registering.`);
+    req.flash(`Thank you, ${user.fullname}. for registering.`);
     res.redirect('/');
   } catch (error) {
-    console.log(error.message);
-    req.flash('danger', error.message);
+    req.flash('error');
     req.session.formData = req.body;
     res.redirect(`/register`);
   }

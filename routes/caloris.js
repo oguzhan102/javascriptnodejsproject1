@@ -1,4 +1,4 @@
-const { new: _new, index, show, create, edit, update, delete: _delete } = require('../controllers/CaloriController');
+const { new: _new, index, secindex,show, create, edit, update, delete: _delete } = require('../controllers/CaloriController');
 
 
 //copy pasted
@@ -12,6 +12,7 @@ function auth (req, res, next) {
 
 module.exports = router => {
   router.get('/caloris', index);
+  router.get('/caloris/mine', secindex);
   router.get('/caloris/new', auth ,_new);
   router.post('/caloris', create);
   router.post('/caloris/update', auth,update);

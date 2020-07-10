@@ -42,6 +42,22 @@ exports.index = async (req, res) => {
   }
 };
 
+exports.secindex = async (req, res) => {
+  try {
+    const caloris = await Calori
+      .find()
+      .populate('user')
+    res.render(`${viewPath}/secindex`, {
+      pageTitle: 'Only your own!',
+      caloris: caloris
+    });
+  }
+  catch (error) {
+    req.flash(`ERROR`);
+    res.redirect('/');
+  }
+};
+
 
 exports.show = async (req, res) => {
   try {
