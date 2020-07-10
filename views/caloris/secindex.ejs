@@ -5,12 +5,12 @@
     <h1>Archive</h1>
   </header>
   <hr>
-  <div class="content">
     <% for (let calori of caloris) { %>
+        <div class="content">
 
 
         <% if (authorized && (typeof calori.user === 'undefined' || calori.user.email === email)) { %>
-          <div class="card my-3">
+            <div class="card my-3">
           <div class="card-header clearfix">
             <div class=" float-left">
               <h5 class="card-title"><%= calori.title %></h5>
@@ -24,7 +24,6 @@
               <% } %>
             </div>
           </div>
-
 
           <div class="card-footer">
             <a href="/caloris/<%= calori.id %>/edit">
