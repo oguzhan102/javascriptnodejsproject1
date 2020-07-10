@@ -1,0 +1,50 @@
+<!--
+  Step 1: This is your descretion how you would like to display data,
+  but you must list all the documents in your resource collection.
+-->
+
+<%- include ('../partials/header') %>
+
+<div class="container my-5">
+  <header>
+    <h1>Archive</h1>
+  </header>
+  <hr>
+  <div class="content">
+    <% for (let calori of caloris) { %>
+      <div class="card my-3">
+        <div class="card-header clearfix">
+          <div class=" float-left">
+            <h5 class="card-title"><%= calori.title %></h5>
+            <% if (typeof calori.user !== 'undefined') { %>
+              <h2>Day: <%= calori.numberofday %></h2>
+              <p>User fullname: <%= calori.user.fullname %></p>
+              <p>Breakfast: <%= calori.breakfast %></p>
+              <p>Lunch: <%= calori.lunch %></p>
+              <p>Dinner: <%= calori.supper %></p>
+              <p>calori intake: <%= calori.calorieintake %></p>
+            <% } %>
+          </div>
+        </div>
+
+
+        <% if (authorized && (typeof calori.user === 'undefined' || calori.user.email === email)) { %>
+          <div class="card-footer">
+            <a href="/caloris/<%= calori.id %>/edit">
+              <i class="fa fa-edit"></i>
+            </a>
+            &nbsp;/&nbsp;
+            <form class="form-inline" action="/caloris/delete" method="post">
+              <input type="hidden" value="<%= calori.id %>" name="id">
+              <button class="delete" type="submit">
+                <i class="fa fa-trash"></i>
+              </button>
+            </form>
+          </div>
+        <% } %>
+      </div>
+    <% } %>
+  </div>
+</div>
+
+<%- include ('../partials/footer') %>

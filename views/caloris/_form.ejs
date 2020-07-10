@@ -1,0 +1,42 @@
+<!--
+  Step 1: The form must be sharable between the new and edit views.
+-->
+
+<%- include ('../partials/header') %>
+
+<form action="<%= (typeof actionPath === 'undefined') ? '/caloris' : actionPath %>", method="POST">
+  <% if (typeof actionPath !== 'undefined') { %>
+    <input type="hidden" name="id" value="<%= formData.id %>">
+  <% } %>
+
+  <div class="form-group">
+    <label for="breakfast">Breakfast:</label>
+    <input class="form-control" type="text" name="breakfast" required value="<%= formData.breakfast %>">
+  </div>
+
+  <div class="form-group">
+    <label for="lunch">Lunch:</label>
+    <input class="form-control" type="text" name="lunch" required value="<%= formData.lunch %>">
+  </div>
+
+  <div class="form-group">
+    <label for="supper">Supper:</label>
+    <input class="form-control" type="text" name="supper" required value="<%= formData.supper %>">
+  </div>
+
+  <div class="form-group">
+    <label for="numberofday">Your diet's day counter:</label>
+    <input class="form-control" type="text" name="numberofday" required value="<%= formData.numberofday %>">
+  </div>
+
+  <div class="form-group">
+    <label for="calorieintake">Calories in total:</label>
+    <input class="form-control" type="text" name="calorieintake" required value="<%= formData.calorieintake %>">
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-primary">Submit</button>
+  </div>
+</form>
+
+<%- include ('../partials/footer') %>
